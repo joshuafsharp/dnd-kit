@@ -1,119 +1,62 @@
-export {
-  DndContext,
-  DragOverlay,
-  defaultAnnouncements,
-  defaultScreenReaderInstructions,
-  defaultDropAnimation,
-  defaultDropAnimationSideEffects,
-  useDndMonitor,
-} from './components';
+export {createDragDropManager} from './manager';
 export type {
-  Announcements,
-  CancelDrop,
-  DndContextProps,
-  DndMonitorListener,
-  DndMonitorListener as DndMonitorArguments,
-  DragOverlayProps,
-  DropAnimation,
-  DropAnimationFunction,
-  DropAnimationFunctionArguments,
-  DropAnimationKeyframeResolver,
-  DropAnimationSideEffects,
-  DraggableMeasuring,
-  MeasuringConfiguration,
-  ScreenReaderInstructions,
-} from './components';
+  CreateDragDropManagerInput,
+  DragDropConfiguration,
+  DragDropManager,
+  DragOperationManager,
+  DragOperationStatus,
+} from './manager';
 
-export {
-  AutoScrollActivator,
-  MeasuringFrequency,
-  MeasuringStrategy,
-  TraversalOrder,
-  useDraggable,
-  useDndContext,
-  useDroppable,
-} from './hooks';
+export type {Data, NodeManager} from './nodes';
+
+export {createDraggable} from './draggable';
 export type {
-  AutoScrollOptions,
-  DraggableAttributes,
-  DraggableSyntheticListeners,
-  DroppableMeasuring,
-  UseDndContextReturnValue,
-  UseDraggableArguments,
-  UseDroppableArguments,
-} from './hooks';
+  CreateDraggableInput,
+  Draggable,
+  DraggableSnapshot,
+} from './draggable';
 
-export {applyModifiers} from './modifiers';
-export type {Modifier, Modifiers} from './modifiers';
-
-export {
-  KeyboardSensor,
-  KeyboardCode,
-  MouseSensor,
-  PointerSensor,
-  TouchSensor,
-  useSensors,
-  useSensor,
-} from './sensors';
+export {createDroppable} from './droppable';
 export type {
-  Activator,
-  Activators,
-  PointerActivationConstraint,
-  KeyboardCodes,
-  KeyboardCoordinateGetter,
-  KeyboardSensorOptions,
-  KeyboardSensorProps,
-  MouseSensorOptions,
-  PointerEventHandlers,
-  PointerSensorOptions,
-  PointerSensorProps,
-  Sensor,
-  Sensors,
-  SensorContext,
-  SensorDescriptor,
-  SensorHandler,
-  SensorInstance,
-  SensorOptions,
-  SensorProps,
-  SensorResponse,
-  TouchSensorOptions,
-} from './sensors';
+  CreateDroppableInput,
+  Droppable,
+  DroppableSnapshot,
+} from './droppable';
 
-export type {
-  Active,
-  Data,
-  DataRef,
-  PublicContextDescriptor as DndContextDescriptor,
-  DraggableNode,
-  DroppableContainers,
-  DroppableContainer,
-  Over,
-} from './store';
+export {rectIntersection} from './collision';
 
-export type {
-  ClientRect,
-  DistanceMeasurement,
-  DragEndEvent,
-  DragMoveEvent,
-  DragOverEvent,
-  DragStartEvent,
-  DragCancelEvent,
-  Translate,
-  UniqueIdentifier,
-} from './types';
+export type {Collision, CollisionDetection} from './collision';
 
-export {
-  defaultCoordinates,
-  getClientRect,
-  getFirstCollision,
-  getScrollableAncestors,
-  closestCenter,
-  closestCorners,
-  rectIntersection,
-  pointerWithin,
-} from './utilities';
-export type {
-  Collision,
-  CollisionDescriptor,
-  CollisionDetection,
-} from './utilities';
+// const manager = createDragDropManager();
+
+// effect(() => {
+//   console.log(manager.collisions.value);
+// });
+
+// const droppable = createDroppable<Element>({
+//   id: 'test',
+// });
+
+// manager.droppable.register(droppable);
+
+// const element = document.createElement('div');
+// element.style.width = '100px';
+// element.style.height = '200px';
+// element.style.top = '20px';
+// element.style.left = '10px';
+// element.style.position = 'absolute';
+
+// document.body.appendChild(element);
+
+// // droppable.ref.value = element;
+
+// manager.dragOperation.actions.start('testing', {x: 0, y: 0});
+// manager.dragOperation.actions.move({x: 100, y: 30});
+
+// requestAnimationFrame(() => {
+//   element.style.width = '10px';
+
+//   requestAnimationFrame(() => {
+//     element.style.width = '200px';
+//   });
+// });
